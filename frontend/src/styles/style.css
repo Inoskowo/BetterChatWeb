@@ -1,0 +1,150 @@
+
+body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url('background.jpg') no-repeat;
+        background-size: cover;
+        background-position: center;
+        }
+
+.header {
+        position: fixed;
+        top: 0; /* Alineación en la parte superior */
+        left: 0;
+        color: #fff; /* Color del texto en el header */
+        padding: 1px 0; /* Espaciado interno en el header */
+        text-align: center; /* Centrar el contenido del header */
+        width: 100%; /* Ancho del header */
+        }
+    
+.logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: -18px; /* Ajustar la distancia del logo hacia abajo */
+           
+          }
+ .logo {
+            width: 80%; /* Cambia este valor según tus necesidades */
+            display: block;
+            margin: 0 auto; /* Centrar horizontalmente */
+            margin-top: -100px; /* Ajustar la distancia superior */
+            margin-right: 0.9px; /* Ajustar la distancia derecha */
+        }
+          
+.wrapper{
+            position: relative;
+            width: 400px;
+            height: 410px;
+            background-color: #E8DFDF;
+            border:  2px solid rgba(222, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 3px rgba(255, 255, 255, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    }
+
+    .wrapper .form-box{
+            width: 100%;
+            padding: 40px;
+    }
+
+ .form-box h2{
+            color: #0a4d68;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+    }
+
+    .left-align {
+        text-align: left;
+    }  
+
+    .left-align a {
+        font-family: "Segoe UI", sans-serif; /* Fuente */
+        font-size: 0.95em; /* Tamaño de fuente */
+        font-style: italic; /* Cursiva */
+    }
+    
+    .input-box {
+        position: relative;
+        width: 100%;
+        margin: 15px 0; /* Ajusta el margen vertical entre los inputs */
+      }
+      
+      .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: #707070; /* Cambia el color de la etiqueta */
+        font-weight: 500;
+        pointer-events: none;
+        transition: .5s;
+        transform-origin: left;
+        background-color: rgb(255, 255, 255); /* Agrega un fondo blanco detrás de la etiqueta */
+        padding: 0 5px; /* Ajusta el espaciado interno de la etiqueta */
+      }
+      
+      .input-box input {
+        width: 300px;
+        height: 100%;
+        background-color: rgb(255, 255, 255); /* Cambia el color de fondo a blanco */
+        border: 1px solid #707070; /* Cambia el color del borde */
+        border-radius: 5px; /* Añade esquinas redondeadas */
+        outline: none;
+        color: #000000;
+        font-size: 1em;
+        font-weight: 500;
+        padding: 10px; 
+        padding: 10px; /* Ajusta el espaciado interno del input */
+        transition: border-color 0.3s ease; /* Agrega una transición al borde */
+      }
+      
+      .input-box input:focus {
+        border-color: #0a4d68; /* Cambia el borde al enfocar el input */
+      }
+
+    .btn{
+        width: 90%;
+        height: 40px;
+        background: #0a4d68;
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1em;
+        color: #fff;
+        font-weight: 500;
+        margin: 20px 0;
+    }
+
+  .login-container .register-text {
+      margin-top: -10px;
+      color: rgb(10, 77, 104);
+
+    }
+
+
+    .login-register{
+        text-align: center;
+        font-size: 1em;
+        color: #fff;
+        font-weight: 500;
+        margin: 25px 0 10px;
+    }
+
+    .login-register p a{
+        color: #b6b6b6;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .login-register p a:hover{
+        text-decoration: underline;
+    }
+
