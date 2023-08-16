@@ -39,7 +39,7 @@ body{
             height: 410px;
             background-color: #E8DFDF;
             border:  2px solid rgba(222, 255, 255, .5);
-            border-radius: 20px;
+            border-radius: 29px;
             backdrop-filter: blur(20px);
             box-shadow: 0 0 3px rgba(255, 255, 255, .5);
             display: flex;
@@ -52,7 +52,12 @@ body{
             padding: 40px;
     }
 
- .form-box h2{
+      .register-wrapper {
+        height: 485px;
+      }
+
+
+.form-box h2{
             color: #0a4d68;
             font-size: 32px;
             text-align: center;
@@ -129,22 +134,16 @@ body{
 
     }
 
-
-    .login-register{
-        text-align: center;
-        font-size: 1em;
-        color: #fff;
-        font-weight: 500;
-        margin: 25px 0 10px;
+    .alert-message {
+      color: #0a4d68; /* Color azul que lleva la página */
+      font-weight: bold;
     }
 
-    .login-register p a{
-        color: #b6b6b6;
-        text-decoration: none;
-        font-weight: 700;
-    }
+    .h2.register{
 
-    .login-register p a:hover{
-        text-decoration: underline;
-    }
+      margin-top: -100px; /* Ajustar la distancia superior */
+      margin-right: 0.9px; 
 
+
+
+    }
