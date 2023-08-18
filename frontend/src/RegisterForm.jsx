@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
 import { app } from "./firebaseConfig.js";
+import { useNavigate } from 'react-router-dom'; // Importa useHistory desde 'react-router-dom'
 import './styles/style.css';
 import logo from './assets/LogoBCB1.png';
 
 const RegisterForm = () => {
+  const navigateTo = useNavigate();
   const [usuario, setUsuario] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +35,7 @@ const RegisterForm = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("Usuario registrado:", user);
+      navigateTo('/setphoto');
     } catch (error) {
       if (error.code === "auth/weak-password") {
         setError("La contraseña es débil. Debe contener al menos 6 caracteres.");
@@ -101,10 +104,10 @@ const RegisterForm = () => {
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button type="submit" className="btn btn-primary">Registrarse</button>
+                <button type="submit" className="btn btn-primary">Registrarse </button>
               </div>
               <p className="mt-3 text-center register-text">
-                         ¿Ya tienes cuenta? <a href="/setphoto" className="register-link"><strong>Iniciar Sesión</strong></a>
+                         ¿Ya tienes cuenta? <a href="/login" className="register-link"><strong>Iniciar Sesión</strong></a>
                     </p>
             </form>
           </div>
