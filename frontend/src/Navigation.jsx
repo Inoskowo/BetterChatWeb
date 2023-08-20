@@ -1,71 +1,56 @@
-import React, { useState } from "react";
-import { FaHome, FaSearch, FaEnvelope, FaBell } from 'react-icons/fa'; // Importa los íconos de react-icons
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "./firebaseConfig.js";
+import React, { useState, useEffect } from "react";
+import { FaHome, FaSearch, FaEnvelope, FaBell } from 'react-icons/fa';
+import { Nav, Navbar, ListGroup } from "react-bootstrap";
+import { auth, db } from "./firebaseConfig.js"; // Importa los módulos necesarios para Firebase
 import './styles/style.css';
 import logo from './assets/SOLOBC.png';
+import { doc, getDoc } from "firebase/firestore"; // Importa los módulos necesarios para Firestore
 
 const Navigation = () => {
-    // Simular el horario (día/noche)
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const isMorning = currentHour < 12;
-    const greeting = isMorning ? "Buenos días" : "Buenas noches";
-  
-    // Nombre de usuario (puedes obtenerlo de tus datos de usuario)
-    const username = " de Usuario";
-    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light navigation">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-            <img src={logo} alt="Logo" className="logo" />
-          </a>
-          <div className="user-info">
-            <p>{greeting}, {username}</p>
-          </div>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <FaHome /> Inicio
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <FaSearch /> Buscar
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <FaEnvelope /> Mensajes
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <FaBell /> Notificaciones
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Perfil
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    );
-  };
-  
-  export default Navigation;
+  const [displayName, setDisplayName] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  const isMorning = currentHour < 12;
+  const greeting = isMorning ? "Buenos días" : "Buenas noches";
+
+  const currentUser = auth.currentUser;
+
+  useEffect(() => {
+    if (currentUser) {
+      const userRef = doc(db, "usuario", currentUser.uid);
+      getDoc(userRef).then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+          setDisplayName(userData.displayName);
+        }
+        setLoading(false);
+      });
+    }
+  }, [currentUser]);
+
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
+  return (
+    <div className="navigation-container">
+      <div className="logo">
+        <img src={logo} alt="Logo" className="logo" />
+      </div>
+      <div className="user-info">
+        <p>{greeting}, {displayName}</p>
+      </div>
+      <ListGroup className="nav-links">
+        <ListGroup.Item><Nav.Link href="#"><FaHome /> Inicio</Nav.Link></ListGroup.Item>
+        <ListGroup.Item><Nav.Link href="#"><FaSearch /> Buscar</Nav.Link></ListGroup.Item>
+        <ListGroup.Item><Nav.Link href="#"><FaEnvelope /> Mensajes</Nav.Link></ListGroup.Item>
+        <ListGroup.Item><Nav.Link href="#"><FaBell /> Notificaciones</Nav.Link></ListGroup.Item>
+        <ListGroup.Item><Nav.Link href="#">Perfil</Nav.Link></ListGroup.Item>
+      </ListGroup>
+    </div>
+  );
+};
+
+export default Navigation;

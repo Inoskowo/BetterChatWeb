@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import Feed from "./Feed";
+
 import Suggestions from "./Suggestions";
 
 const MainContent = () => {
