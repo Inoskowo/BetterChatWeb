@@ -1,8 +1,7 @@
-import React from "react";
-import Navigation from "./Navigation";
-import Feed from "./Feed";
+import Navigation from "./components/Navigation";
+import Feed from "./components/Feed";
 
-import Suggestions from "./Suggestions";
+import Suggestions from "./components/Suggestions";
 
 const MainContent = () => {
   return (

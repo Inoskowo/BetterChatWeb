@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
-import { app } from "./firebaseConfig.js";
+import { app } from "../utils/firebaseConfig.js";
 import { useNavigate } from 'react-router-dom'; // Importa useHistory desde 'react-router-dom'
-import './styles/style.css';
-import logo from './assets/LogoBCB1.png';
+import '../styles/style.css';
+import logo from '../assets/LogoBCB1.png';
 
 const RegisterForm = () => {
   const navigateTo = useNavigate();
@@ -20,10 +20,10 @@ const RegisterForm = () => {
       if (password !== confirmPassword) {
         setError("Las contraseñas no coinciden.");
         return;
-      } 
+      }
 
       const auth = getAuth(app);
-      
+
       // Verificar si el usuario ya existe
       const signInMethods = await fetchSignInMethodsForEmail(auth, email);
       if (signInMethods.length > 0) {
@@ -51,10 +51,10 @@ const RegisterForm = () => {
       </div>
       <div className="wrapper register-wrapper">
         <div className="form-box register">
-          <div className="col-md-6">    
+          <div className="col-md-6">
             <h2 className="text-center mb-4">Registrate</h2>
             {error && <div className="alert alert-danger alert-message">{error}</div>}
-            <form   onSubmit={handleRegister}>
+            <form onSubmit={handleRegister}>
               <div className="input-box">
                 <label htmlFor="usuario" className="form-label"></label>
                 <input
@@ -107,8 +107,8 @@ const RegisterForm = () => {
                 <button type="submit" className="btn btn-primary">Registrarse </button>
               </div>
               <p className="mt-3 text-center register-text">
-                         ¿Ya tienes cuenta? <a href="/login" className="register-link"><strong>Iniciar Sesión</strong></a>
-                    </p>
+                ¿Ya tienes cuenta? <a href="/" className="register-link"><strong>Iniciar Sesión</strong></a>
+              </p>
             </form>
           </div>
         </div>

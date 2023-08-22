@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaHome, FaSearch, FaEnvelope, FaBell } from 'react-icons/fa';
-import { Nav, Navbar, ListGroup } from "react-bootstrap";
-import { auth, db } from "./firebaseConfig.js"; // Importa los módulos necesarios para Firebase
+import { Nav, ListGroup } from "react-bootstrap";
+import { auth, db } from "../../../utils/firebaseConfig.js"; // Importa los módulos necesarios para Firebase
 import './styles/style.css';
-import logo from './assets/SOLOBC.png';
+import logo from '../../../assets/SOLOBC.png';
 import { doc, getDoc } from "firebase/firestore"; // Importa los módulos necesarios para Firestore
 
 const Navigation = () => {
   const [displayName, setDisplayName] = useState("");
+
+  // the loading is to slow sometimes xd
   const [loading, setLoading] = useState(true);
 
   const currentTime = new Date();

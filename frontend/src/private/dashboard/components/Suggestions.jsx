@@ -1,6 +1,6 @@
 // Suggestions.jsx
-import React, { useState, useEffect } from "react";
-import { db } from "./firebaseConfig.js";
+import { useState, useEffect } from "react";
+import { db } from "../../../utils/firebaseConfig.js";
 import "./styles/suggestions.css";
 
 const Suggestions = () => {

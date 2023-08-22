@@ -1,6 +1,6 @@
 // Feed.jsx
-import React, { useState, useEffect } from "react";
-import { db } from "./firebaseConfig.js";
+import { useState, useEffect } from "react";
+import { db } from "../../../utils/firebaseConfig.js";
 import "./styles/feed.css";
 
 const Feed = () => {
@@ -29,4 +29,3 @@ const Feed = () => {
 };
 
 export default Feed;
-    
